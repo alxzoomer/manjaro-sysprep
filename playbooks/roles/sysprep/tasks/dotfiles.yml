@@ -1,0 +1,57 @@
+---
+- name: "Get {{ target_user }} user info"
+  user:
+    name: "{{ target_user }}"
+  register: user_info
+
+- name: "Download dotfiles repositories for {{ target_user }}"
+  git:
+    repo: '{{ item.repo }}'
+    dest: '{{ user_info.home }}/{{ item.dest }}'
+  loop:
+    # Dotfiles itself
+    - repo: 'https://github.com/alxzoomer/dotfiles.git'
+      dest: '{{ dotfiles_dir }}'
+    # Spaceship theme for Oh my ZSH
+    - repo: 'https://github.com/alxzoomer/dotfiles.git'
+      dest: '{{ dotfiles_dir }}/shell/custom/themes/spaceship-prompt'
+    # Powerlevel9k theme for Oh my ZSH
+    - repo: 'https://github.com/bhilburn/powerlevel9k.git'
+      dest: '{{ dotfiles_dir }}/shell/custom/themes/powerlevel9k'
+    # ZSH autosuggestion custom plugin
+    - repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+      dest: '{{ dotfiles_dir }}/shell/custom/plugins/zsh-autosuggestions'
+    # ZSH peco history plugin
+    - repo: 'https://github.com/jimeh/zsh-peco-history.git'
+      dest: '{{ dotfiles_dir }}/shell/custom/plugins/zsh-peco-history'
+    # VIM Vundle plugin
+    - repo: 'https://github.com/VundleVim/Vundle.vim.git'
+      dest: '{{ vim_dir }}/bundle/Vundle.vim'
+    # Install Oh my ZSH
+    - repo: 'https://github.com/robbyrussell/oh-my-zsh.git'
+      dest: '.oh-my-zsh'
+
+- name: "Create directories for {{ target_user }}"
+  file:
+    path: "{{ user_info.home }}/{{ item.dest | dirname }}"
+    state: directory
+  loop: "{{ dotfiles_link_files + dotfiles_copy_files + dotfiles_link_dirs }}"
+
+- name: "Link target files/directories for {{ target_user }}"
+  file:
+    src: "{{ user_info.home }}/{{ dotfiles_dir }}/{{ item.src }}"
+    dest: "{{ user_info.home }}/{{ item.dest }}"
+    state: link
+    force: true
+  loop: "{{ dotfiles_link_files + dotfiles_link_dirs}}"
+
+- name: "Copy files for {{ target_user }}"
+  copy:
+    src: "{{ user_info.home }}/{{ dotfiles_dir }}/{{ item.src }}"
+    dest: "{{ user_info.home }}/{{ item.dest }}"
+    remote_src: true
+    force: "{{ dotfiles_force_copy_files }}"
+  loop: "{{ dotfiles_copy_files }}"
+
+- name: "Install VIM plugins for {{ target_user }}"
+  shell: timeout 5m vim -T dumb -n -c "set nomore" -c "PluginInstall" -c "qall"

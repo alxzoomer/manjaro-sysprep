@@ -1,0 +1,8 @@
+---
+- name: Sysprep
+  hosts: all
+  become: True
+  become_user: root
+  gather_facts: True
+  roles:
+    - sysprep

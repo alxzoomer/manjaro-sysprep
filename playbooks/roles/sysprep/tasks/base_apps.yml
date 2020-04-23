@@ -1,0 +1,26 @@
+---
+- name: Install build packages
+  pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - base-devel
+      - git
+      - linux-headers
+
+- name: Install base applications
+  pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - curl
+      - vim
+      - zsh
+      - git
+      - mc
+      - file
+      - tmux
+      - imagemagick
+      - jq

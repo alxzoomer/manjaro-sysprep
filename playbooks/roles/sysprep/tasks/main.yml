@@ -1,0 +1,21 @@
+---
+- name: Perform packages update
+  include_tasks: update.yml
+  when: sysprep_install_updates | bool
+
+- name: Install base applications
+  include_tasks: base_apps.yml
+
+- name: Change shell for users
+  user:
+    name: "{{ item }}"
+    shell: "/usr/bin/zsh"
+  loop: "{{ users }}"
+
+- name: Install dotfiles
+  include_tasks: dotfiles.yml
+  vars:
+    ansible_become_user: "{{ target_user }}"
+  loop: "{{ users }}"
+  loop_control:
+    loop_var: target_user

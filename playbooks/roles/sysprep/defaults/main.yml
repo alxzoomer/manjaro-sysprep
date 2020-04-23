@@ -1,0 +1,42 @@
+sysprep_install_updates: false
+dotfiles_dir: dotfiles
+
+dotfiles_link_files:
+  - src: git/gitconfig
+    dest: .gitconfig
+  - src: git/gitignore_global
+    dest: .gitignore_global
+  - src: shell/zshrc
+    dest: .zshrc
+  - src: shell/tmux.conf
+    dest: .tmux.conf
+  - src: shell/psqlrc
+    dest: .psqlrc
+  - src: shell/tmux-powerlinerc
+    dest: .tmux-powerlinerc
+  - src: shell/custom.sh
+    dest: .tmux/themes/tmux-powerline/themes/custom.sh
+  - src: vim/vimrc
+    dest: .vimrc
+
+# When true then all files dotfiles_copy_files will be copied
+dotfiles_force_copy_files: false
+dotfiles_copy_files:
+  - src: mc/hotlist
+    dest: .config/mc/hotlist
+  - src: mc/ini
+    dest: .config/mc/ini
+  - src: mc/menu
+    dest: .config/mc/menu
+  - src: mc/panels.ini
+    dest: .config/mc/panels.ini
+
+dotfiles_link_dirs:
+  - src: shell/custom
+    dest: .custom
+  - src: mc/skins
+    dest: .local/share/mc/skins
+  - src: vim/colors
+    dest: .vim/colors
+
+vim_dir: .vim

@@ -1,0 +1,6 @@
+- name: Update packages
+  pacman:
+    update_cache: yes
+    upgrade: yes
+
+# TODO: Check if reboot required and reboot if allowed
