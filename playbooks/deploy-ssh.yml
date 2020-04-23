@@ -1,0 +1,8 @@
+---
+- name: Deploy SSH keys
+  hosts: all
+  become: True
+  become_user: root
+  gather_facts: True
+  roles:
+    - deploy-ssh-keys

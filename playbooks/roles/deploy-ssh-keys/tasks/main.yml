@@ -1,0 +1,15 @@
+---
+- name: Upload SSH key
+  authorized_key:
+    user: "{{ item }}"
+    state: present
+    key: "{{ lookup('file', '{{ ssh_key_master }}') }}"
+  loop: "{{ users }}"
+  when: ssh_key_master is defined
+
+- name: Give sudo without password
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%sudo\s'
+    line: '%sudo ALL=(ALL) NOPASSWD:ALL'
