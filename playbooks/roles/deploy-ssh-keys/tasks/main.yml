@@ -7,9 +7,7 @@
   loop: "{{ users }}"
   when: ssh_key_master is defined
 
-- name: Give sudo without password
-  lineinfile:
-    path: /etc/sudoers
-    state: present
-    regexp: '^%sudo\s'
-    line: '%sudo ALL=(ALL) NOPASSWD:ALL'
+- name: Upload sudoers file
+  template:
+    src: sudoers.j2
+    dest: "/etc/sudoers.d/90-{{ ansible_user }}"
