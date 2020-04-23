@@ -1,0 +1,18 @@
+all:
+  hosts:
+    # Change host name to IP or DNS name if target host is remote
+    localhost:
+      # User with sudo access. Change it to your user name.
+      ansible_user: testuser
+      ansible_python_interpreter: /usr/bin/python3
+      # deploy-ssh-keys role parameters
+      # Key must exists on ansible host
+      # Define key when deployment performed to remote host
+      ssh_key_master: "~/.ssh/id_rsa.pub"
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+      ansible_ssh_extra_args: "-o StrictHostKeyChecking=no"
+      users:
+        - root
+        - "{{ ansible_user }}"
+      # sysprep variables
+      sysprep_install_updates: true
