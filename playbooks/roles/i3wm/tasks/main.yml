@@ -1,0 +1,127 @@
+---
+- name: Install font
+  include_tasks: fonts.yml
+  vars:
+    ansible_become_user: "{{ i3wm_user }}"
+  when: i3wm_fonts_install | bool
+
+- name: Install i3wm
+  pacman:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - i3-wm
+      - i3status
+      - i3lock
+      - dmenu
+      - rofi
+      - gxkb
+      - xss-lock
+      - feh
+      - networkmanager-vpnc
+      # X server clipboard
+      - xsel
+      - htop
+      - rxvt-unicode
+
+- name: Configure i3
+  block:
+    - name: Create i3 config directories
+      file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - "{{ i3wm_config_dir }}"
+        - "{{ i3status_config_dir }}"
+
+    - name: Copy i3 config
+      template:
+        src: i3.config.j2
+        dest: "{{ i3wm_config_dir }}/config"
+
+    - name: Copy i3status config
+      template:
+        src: i3status.config.j2
+        dest: "{{ i3status_config_dir }}/config"
+
+    - name: Create .images directory
+      file:
+        path: "{{ i3lock_images_dir }}"
+        state: directory
+
+    - name: Copy images
+      copy:
+        src: lockscreen.png
+        dest: "{{ i3lock_image_src_file }}"
+      register: copy_lockscreen_image_result
+
+    - name: Remove old target image
+      file:
+        path: "{{ i3lock_image_file }}"
+        state: absent
+      when: copy_lockscreen_image_result.changed
+
+    - name: Get target image
+      stat:
+        path: "{{ i3lock_image_file }}"
+      register: i3lock_image_file_stat
+
+    - name: Resize image
+      shell: >-
+        convert {{ i3lock_image_src_file }}
+        -resize {{ i3lock_image_size }}^
+        -gravity center
+        -extent {{ i3lock_image_size }}
+        {{ i3lock_image_file }}
+      when: not i3lock_image_file_stat.stat.exists
+
+    - name: Create gxkb config dir
+      file:
+        path: "{{ gxkb_config_dir }}"
+        state: directory
+
+    - name: Upload gxkb.cfg
+      template:
+        src: gxkb.cfg.j2
+        dest: "{{ gxkb_config_dir }}/gxkb.cfg"
+
+    - name: "Create {{ xresources_dir }}"
+      file:
+        path: "~/{{ xresources_dir }}"
+        state: directory
+
+    - name: Copy Xresources configs
+      template:
+        src: "xresources/{{ item }}.j2"
+        dest: "~/{{ xresources_dir }}/{{ item }}"
+      loop:
+        - fonts
+        - urxvt
+
+    - name: Copy .Xresources file
+      template:
+        src: xresources/Xresources.j2
+        dest: ~/.Xresources
+
+    - name: Create xfce4 terminal config dir
+      file:
+        path: "{{ xfce4_terminal_config_dir }}"
+        state: directory
+
+    - name: Copy xfce4 terminal config
+      template:
+        src: "xfce4/{{ item.src }}"
+        dest: "{{ xfce4_terminal_config_dir }}/{{ item.dest }}"
+      loop:
+        - { src: "terminalrc.j2", dest: "terminalrc" }
+        - { src: "accels.scm.j2", dest: "accels.scm" }
+
+  become_user: "{{ i3wm_user }}"
+
+- name: Upload Xorg libinput.conf
+  template:
+    src: xorg/libinput.conf.j2
+    dest: /usr/share/X11/xorg.conf.d/40-libinput.conf
+    mode: 0644
+

@@ -1,0 +1,4 @@
+---
+- name: Rebuild fonts cache
+  shell: 'fc-cache -v -f'
+  become_user: "{{ i3wm_user }}"

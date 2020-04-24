@@ -1,0 +1,8 @@
+---
+  - name: i3 WM Install
+    hosts: all
+    become: True
+    become_user: root
+    gather_facts: True
+    roles:
+      - i3wm
