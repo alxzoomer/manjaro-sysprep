@@ -3,7 +3,7 @@
 sudo systemctl start sshd
 
 sudo pacman -Sy --noconfirm
-sudo pacman -Sy --noconfirm ansible git
+sudo pacman -Sy --noconfirm ansible git yay
 
 mkdir -p ~/projects
 
