@@ -1,0 +1,45 @@
+---
+- name: Install applications from AUR
+  aur:
+    name:
+      # Internet
+      - google-chrome
+      - teams
+      - dropbox
+      # Dev
+      - typora
+      - visual-studio-code-bin
+      - azuredatastudio
+  become: true
+  become_user: "{{ ansible_user }}"
+
+- name: Install applications from Manjaro repo
+  pacman:
+    name:
+      # Dev
+      - atom
+      - docker
+      - ansible
+      - ansible-lint
+      - remmina
+      # Internet
+      - telegram-desktop
+
+#     - remmina
+#     - remmina-plugin-rdp
+#     - remmina-plugin-secret
+#     - remmina-plugin-vnc
+
+- name: Add user to group docker
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: yes
+
+- name: Start services
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  loop:
+    - docker
