@@ -1,4 +1,16 @@
 ---
+- name: Install applications from Manjaro repo
+  pacman:
+    name:
+      # Dev
+      - atom
+      - docker
+      - ansible
+      - ansible-lint
+      - remmina
+      # Internet
+      - telegram-desktop
+
 - name: Install applications from AUR
   aur:
     name:
@@ -12,18 +24,6 @@
       - azuredatastudio
   become: true
   become_user: "{{ ansible_user }}"
-
-- name: Install applications from Manjaro repo
-  pacman:
-    name:
-      # Dev
-      - atom
-      - docker
-      - ansible
-      - ansible-lint
-      - remmina
-      # Internet
-      - telegram-desktop
 
 #     - remmina
 #     - remmina-plugin-rdp
