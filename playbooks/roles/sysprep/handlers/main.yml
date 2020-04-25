@@ -1,0 +1,7 @@
+---
+- name: restart tigervnc
+  systemd:
+    state: restarted
+    enabled: true
+    daemon_reload: yes
+    name: "vncserver@:{{ tigervnc_display }}"

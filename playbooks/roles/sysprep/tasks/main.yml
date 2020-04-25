@@ -19,3 +19,5 @@
   loop: "{{ users }}"
   loop_control:
     loop_var: target_user
+
+- include_tasks: tigervnc.yml

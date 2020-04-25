@@ -1,0 +1,59 @@
+---
+- name: Install TigerVNC
+  pacman:
+    name: tigervnc
+    state: present
+
+- name: Copy vncservice systemd file
+  template:
+    src: vncservice.j2
+    dest: "/etc/systemd/system/vncserver@:{{ tigervnc_display }}.service"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart tigervnc
+
+- name: Stat user info
+  user:
+    name: "{{ tigervnc_user }}"
+    state: present
+  register: tigervnc_user_stat
+
+- name: Create the remote ~/.vnc directory
+  file:
+    path: "{{ tigervnc_user_stat.home }}/.vnc"
+    owner: "{{ tigervnc_user }}"
+    group: "{{ tigervnc_user }}"
+    mode: 0755
+    state: directory
+  notify:
+    - restart tigervnc
+
+- name: Set vnc password for user
+  shell: |
+    echo {{ tigervnc_vncpass }} | vncpasswd -f > {{ tigervnc_user_stat.home }}/.vnc/passwd
+  args:
+    executable: /bin/bash
+  when: tigervnc_vncpass != ""
+  notify:
+    - restart tigervnc
+
+- name: Change permissions to 600 for ~/.vnc/passwd
+  file:
+    path: "{{ tigervnc_user_stat.home }}/.vnc/passwd"
+    owner: "{{ tigervnc_user }}"
+    group: "{{ tigervnc_user }}"
+    mode: 0600
+  notify:
+    - restart tigervnc
+
+- name: Copy vnc xstartup
+  template:
+    src: vnc_xstartup.j2
+    dest: "{{ tigervnc_user_stat.home }}/.vnc/xstartup"
+    owner: "{{ tigervnc_user }}"
+    group: "{{ tigervnc_user }}"
+    mode: 0755
+  notify:
+    - restart tigervnc
