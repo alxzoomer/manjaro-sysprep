@@ -1,4 +1,9 @@
 ---
+- name: Install frameworks from Manjaro repo
+  pacman:
+    name:
+      - jre11-openjdk
+
 - name: Install applications from Manjaro repo
   pacman:
     name:
@@ -8,8 +13,16 @@
       - ansible
       - ansible-lint
       - remmina
+      - freerdp
+      - yarn
+      - pandoc
+      - plantuml
       # Internet
       - telegram-desktop
+      - transmission-gtk
+      - shadowsocks-libev
+      # Security
+      - keepassxc
 
 - name: Install applications from AUR
   aur:
@@ -22,6 +35,10 @@
       - typora
       - visual-studio-code-bin
       - azuredatastudio
+      - freemind
+      # Mind map app instead of freemind
+      #- freeplane
+
   become: true
   become_user: "{{ ansible_user }}"
 
