@@ -38,20 +38,32 @@
       - freemind
       # Mind map app instead of freemind
       #- freeplane
-
+  when: soft_install_aur | bool
   become: true
   become_user: "{{ ansible_user }}"
 
-#     - remmina
-#     - remmina-plugin-rdp
-#     - remmina-plugin-secret
-#     - remmina-plugin-vnc
+- name: Create group docker
+  group:
+    name: docker
+    state: present
 
 - name: Add user to group docker
   user:
     name: "{{ ansible_user }}"
     groups: docker
     append: yes
+
+- name: Create shadowsocks config dir
+  file:
+    path: "{{ shadowsocks_conf_dir }}"
+    state: directory
+
+- name: Create shadowsocks config
+  copy:
+    content: "{{ shadowsocks_config | to_nice_json(indent=2) }}"
+    dest: "{{ shadowsocks_conf_file }}"
+    mode: 0640
+    owner: nobody
 
 - name: Start services
   service:
@@ -60,3 +72,4 @@
     enabled: true
   loop:
     - docker
+    - 'shadowsocks-libev@{{ shadowsocks_service_name }}'
