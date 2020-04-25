@@ -24,6 +24,9 @@
     # ZSH peco history plugin
     - repo: 'https://github.com/jimeh/zsh-peco-history.git'
       dest: '{{ dotfiles_dir }}/shell/custom/plugins/zsh-peco-history'
+    # ZSH syntax highlighting plugin
+    - repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
+      dest: '{{ dotfiles_dir }}/shell/custom/plugins/zsh-syntax-highlighting'
     # VIM Vundle plugin
     - repo: 'https://github.com/VundleVim/Vundle.vim.git'
       dest: '{{ vim_dir }}/bundle/Vundle.vim'
