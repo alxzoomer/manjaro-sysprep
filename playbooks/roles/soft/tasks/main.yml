@@ -3,6 +3,8 @@
   pacman:
     name:
       - jre11-openjdk
+      - go
+      - dotnet-sdk
 
 - name: Install applications from Manjaro repo
   pacman:
@@ -17,6 +19,8 @@
       - yarn
       - pandoc
       - plantuml
+      - nvm
+      - pyenv
       # Internet
       - telegram-desktop
       - transmission-gtk
@@ -36,6 +40,8 @@
       - visual-studio-code-bin
       - azuredatastudio
       - freemind
+      - rbenv
+      - ruby-build
       # Mind map app instead of freemind
       #- freeplane
   when: soft_install_aur | bool
