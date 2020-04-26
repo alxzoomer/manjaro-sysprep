@@ -1,0 +1,13 @@
+---
+- name: Disable mitigations
+  lineinfile:
+    path: /etc/default/grub
+    state: present
+    insertafter: EOF
+    regexp: '^GRUB_CMDLINE_LINUX=""'
+    line: 'GRUB_CMDLINE_LINUX="mitigations=off"'
+  register: mitigations_result
+
+- name: Update grub
+  shell: /usr/bin/update-grub
+  when: mitigations_result.changed
