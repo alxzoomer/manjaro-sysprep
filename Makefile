@@ -7,6 +7,9 @@ PROJECTNAME=$(shell basename "$(PWD)")
 
 default: help
 
+## all: Run sysprep i3 and soft targets
+all: sysprep i3 soft
+
 ## sysprep: Instal base system packages
 sysprep:
 	@echo Run sysprep playbook
