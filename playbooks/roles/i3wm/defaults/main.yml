@@ -22,6 +22,9 @@ i3wm_nerd_fonts:
   - Go-Mono
   - DejaVuSansMono
 
+# Swap left Alt and Super/Win keys
+i3_swap_l_alt_l_super: false
+
 # gxkb keyboard layout applet/switcher
 gxkb_config_dir: ~/.config/gxkb
 xresources_dir: .Xresources.d

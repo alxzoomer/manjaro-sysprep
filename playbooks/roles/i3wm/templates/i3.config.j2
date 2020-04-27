@@ -10,7 +10,13 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 focus_follows_mouse no
 
+# Map to Super/Win key
 set $mod Mod4
+
+{% if i3_swap_l_alt_l_super %}
+# Swap Super/Win and Alt
+exec_always --no-startup-id "/usr/bin/setxkbmap -option altwin:swap_alt_win"
+{% endif %}
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -21,6 +27,9 @@ font pango:JetBrainsMono Nerd Font Medium 10
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
+
+# Remap keyboard keys if required
+exec_always --no-startup-id xmodmap ~/.Xmodmap
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -54,7 +63,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 assign [class="Google-chrome"] 2
-exec google-chrome
+exec /opt/google/chrome/chrome
 # exec gnome-terminal
 exec xfce4-terminal
 # start a terminal
