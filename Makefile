@@ -5,9 +5,15 @@ LIMIT=f1.hv
 
 PROJECTNAME=$(shell basename "$(PWD)")
 
-default: help
+## default: Run 'make' without parameters to show help and init local ansible
+default: help init
 
-## all: Run sysprep i3 and soft targets
+## deploy-ssh: Deploy SSH public key and configure sudoers
+deploy-ssh:
+	@echo Deploy ssh keys
+	@$(ANSIBLE_PLAYBOOK) --ask-pass -k -K -i hosts.yml -l $(LIMIT) $(PLAYBOOKDIR)/deploy-ssh.yml
+
+## all: Run sysprep, i3 and soft
 all: sysprep i3 soft
 
 ## sysprep: Instal base system packages
@@ -24,11 +30,6 @@ i3:
 soft:
 	@echo Run soft playbook
 	@$(ANSIBLE_PLAYBOOK) -i hosts.yml -l $(LIMIT) $(PLAYBOOKDIR)/soft.yml
-
-## deploy-ssh: Deploy SSH public key and configure sudoers
-deploy-ssh:
-	@echo Deploy ssh keys
-	@$(ANSIBLE_PLAYBOOK) --ask-pass -k -K -i hosts.yml -l $(LIMIT) $(PLAYBOOKDIR)/deploy-ssh.yml
 
 ## init: Install required modules for local ansible
 init:
