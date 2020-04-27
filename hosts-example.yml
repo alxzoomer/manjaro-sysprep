@@ -16,3 +16,24 @@ all:
         - "{{ ansible_user }}"
       # sysprep variables
       sysprep_install_updates: true
+      # Shadow socks config
+      shadowsocks_config:
+        server: remote_server_host_or_ip
+        server_port: 8388
+        local_address: 127.0.0.1
+        local_port: 1080
+        password: 'remote server password'
+        timeout: 300
+        method: aes-256-cfb
+        fast_open: false
+        workers: 1
+      # TigerVNC password. Empty password will be skipped
+      tigervnc_vncpass: ''
+      # i3 variables
+      # Install fonts
+      i3wm_fonts_install: true
+      # Set image size for background image and i3lock
+      i3lock_image_size: 1680x1050
+      # Soft role variables
+      # Install soft from AUR
+      soft_install_aur: true
