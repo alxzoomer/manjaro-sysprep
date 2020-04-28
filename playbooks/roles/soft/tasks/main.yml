@@ -22,6 +22,7 @@
       - nvm
       - pyenv
       # Internet
+      - firefox
       - telegram-desktop
       - transmission-gtk
       - shadowsocks-libev
