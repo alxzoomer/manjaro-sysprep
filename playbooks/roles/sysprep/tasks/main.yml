@@ -23,3 +23,5 @@
 - include_tasks: tigervnc.yml
 
 - include_tasks: meltdown.yml
+
+- include_tasks: grub.yml
