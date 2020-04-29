@@ -24,6 +24,9 @@
       - xsel
       - htop
       - rxvt-unicode
+      # Themes configuration
+      - lxappearance
+      - qt5ct
 
 - name: Configure i3
   block:
