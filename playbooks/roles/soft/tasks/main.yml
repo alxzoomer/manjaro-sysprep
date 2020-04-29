@@ -43,7 +43,7 @@
       - freemind
       - rbenv
       - ruby-build
-      - vmware-workstation
+      # - vmware-workstation
       # Mind map app instead of freemind
       #- freeplane
   when: soft_install_aur | bool
