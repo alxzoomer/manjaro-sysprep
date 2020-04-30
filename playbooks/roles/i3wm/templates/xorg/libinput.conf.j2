@@ -23,6 +23,20 @@ Section "InputClass"
 EndSection
 
 Section "InputClass"
+        Identifier "synaptics touchpad catchall"
+        MatchIsTouchpad "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "synaptics"
+        Option "VertTwoFingerScroll" "on"
+        Option "HorizTwoFingerScroll" "on"
+        Option "VertScrollDelta" "-111"
+        Option "HorizScrollDelta" "-111"
+        Option "TapButton1" "1"
+        Option "TapButton2" "3"
+        Option "TapButton3" "2"
+EndSection
+
+Section "InputClass"
         Identifier "libinput touchscreen catchall"
         MatchIsTouchscreen "on"
         MatchDevicePath "/dev/input/event*"

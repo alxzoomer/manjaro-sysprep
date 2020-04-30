@@ -27,6 +27,8 @@
       # Themes configuration
       - lxappearance
       - qt5ct
+      - xf86-input-synaptics
+      - xorg-xinput
 
 - name: Configure i3
   block:
