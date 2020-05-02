@@ -13,7 +13,7 @@
     - repo: 'https://github.com/alxzoomer/dotfiles.git'
       dest: '{{ dotfiles_dir }}'
     # Spaceship theme for Oh my ZSH
-    - repo: 'https://github.com/alxzoomer/dotfiles.git'
+    - repo: 'https://github.com/denysdovhan/spaceship-prompt.git'
       dest: '{{ dotfiles_dir }}/shell/custom/themes/spaceship-prompt'
     # Powerlevel9k theme for Oh my ZSH
     - repo: 'https://github.com/bhilburn/powerlevel9k.git'
