@@ -21,8 +21,17 @@ URxvt.allow_bold:           true
 /* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
 ! URxvt*font: xft:Monospace:pixelsize=14
 ! URxvt*boldFont: xft:Monospace:pixelsize=14
-URxvt*font: xft:JetBrainsMono Nerd Font:style=Regular:size=12
-URxvt*boldFont: xft:JetBrainsMono Nerd Font:style=Bold:size=12
+#define fjet JetBrainsMono Nerd Font Mono
+#define ffira FiraCode Nerd Font Mono
+#define fdejavu DejaVuSansMono Nerd Font Mono
+#define fsrccode SauceCodePro Nerd Font Mono
+#define fh Hack Nerd Font Mono
+
+URxvt*font: xft:fjet:pixelsize=16
+URxvt*boldFont: xft:fjet:bold:pixelsize=16
+URxvt*italicFont: xft:fjet:italic:pixelsize=16
+URxvt*boldItalicFont: xft:fjet:bold:italic:pixelsize=16
+
 ! Fix font space
 URxvt*letterSpace: -1
 
