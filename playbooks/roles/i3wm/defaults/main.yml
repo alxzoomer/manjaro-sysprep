@@ -30,4 +30,5 @@ gxkb_config_dir: ~/.config/gxkb
 xresources_dir: .Xresources.d
 xresources_fonts_path: "{{ xresources_dir }}/fonts"
 xresources_urxvt_path: "{{ xresources_dir }}/urxvt"
+xresources_xterm_path: "{{ xresources_dir }}/xterm"
 xfce4_terminal_config_dir: ~/.config/xfce4/terminal
