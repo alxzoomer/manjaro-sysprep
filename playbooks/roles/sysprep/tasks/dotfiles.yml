@@ -18,6 +18,9 @@
     # Powerlevel9k theme for Oh my ZSH
     - repo: 'https://github.com/bhilburn/powerlevel9k.git'
       dest: '{{ dotfiles_dir }}/shell/custom/themes/powerlevel9k'
+    # Powerlevel10k theme for Oh my ZSH
+    - repo: 'https://github.com/romkatv/powerlevel10k.git'
+      dest: '{{ dotfiles_dir }}/shell/custom/themes/powerlevel10k'
     # ZSH autosuggestion custom plugin
     - repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
       dest: '{{ dotfiles_dir }}/shell/custom/plugins/zsh-autosuggestions'

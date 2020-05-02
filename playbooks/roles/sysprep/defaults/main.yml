@@ -14,6 +14,8 @@ dotfiles_link_files:
     dest: .psqlrc
   - src: shell/tmux-powerlinerc
     dest: .tmux-powerlinerc
+  - src: shell/p10k.zsh
+    dest: .p10k.zsh
   - src: shell/custom.sh
     dest: .tmux/themes/tmux-powerline/themes/custom.sh
   - src: vim/vimrc
