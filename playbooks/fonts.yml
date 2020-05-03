@@ -1,0 +1,8 @@
+---
+- name: Install fonts
+  hosts: all
+  become: True
+  become_user: root
+  gather_facts: True
+  roles:
+    - fonts

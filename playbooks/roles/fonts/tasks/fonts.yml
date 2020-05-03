@@ -8,7 +8,7 @@
   stat:
     path: "~/.temp/{{ item }}.zip"
   register: fonts_arch_stats
-  loop: "{{ i3wm_nerd_fonts }}"
+  loop: "{{ nerd_fonts }}"
 
 - name: Check not all fonts downloaded
   set_fact:
@@ -16,24 +16,24 @@
 
 - name: Download fonts
   get_url:
-    url: "{{ i3wm_nerd_fonts_base_url }}/{{ item }}.zip"
+    url: "{{ nerd_fonts_base_url }}/{{ item }}.zip"
     dest: "~/.temp/{{ item }}.zip"
     timeout: 30
-  loop: "{{ i3wm_nerd_fonts }}"
+  loop: "{{ nerd_fonts }}"
   when: not_all_fonts_exists | bool
 
 - name: Create fonts directories
   file:
-    path: "{{ i3wm_fonts_dir }}/{{ item }}"
+    path: "{{ fonts_dir }}/{{ item }}"
     state: directory
-  loop: "{{ i3wm_nerd_fonts }}"
+  loop: "{{ nerd_fonts }}"
 
 - name: Extract fonts
   unarchive:
     src: "~/.temp/{{ item }}.zip"
-    dest: "{{ i3wm_fonts_dir}}/{{ item }}"
+    dest: "{{ fonts_dir }}/{{ item }}"
     remote_src: yes
-  loop: "{{ i3wm_nerd_fonts }}"
+  loop: "{{ nerd_fonts }}"
   notify: Rebuild fonts cache
 
 - meta: flush_handlers

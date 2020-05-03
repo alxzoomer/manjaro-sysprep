@@ -9,22 +9,6 @@ i3status_config_dir: ~/.config/i3status
 # i3status/polybar
 i3wm_bar: "i3status"
 
-# Fonts configuration
-i3wm_fonts_install: true
-i3wm_fonts_dir: "~/.fonts"
-# Nerd fonts
-i3wm_nerd_fonts_version: v2.1.0
-i3wm_nerd_fonts_base_url: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ i3wm_nerd_fonts_version }}"
-i3wm_nerd_fonts:
-  - JetBrainsMono
-  - FiraCode
-  - Hack
-  - Meslo
-  - Terminus
-  - SourceCodePro
-  - Go-Mono
-  - DejaVuSansMono
-
 # Swap left Alt and Super/Win keys
 i3_swap_l_alt_l_super: false
 

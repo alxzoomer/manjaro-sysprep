@@ -30,8 +30,6 @@ all:
       # TigerVNC password. Empty password will be skipped
       tigervnc_vncpass: ''
       # i3 variables
-      # Install fonts
-      i3wm_fonts_install: true
       # Set image size for background image and i3lock
       i3lock_image_size: 1680x1050
       # Soft role variables

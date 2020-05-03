@@ -1,0 +1,16 @@
+target_user: "{{ ansible_user }}"
+# Fonts configuration
+fonts_dir: "~/.fonts"
+# Nerd fonts
+nerd_fonts_version: v2.1.0
+nerd_fonts_base_url: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nerd_fonts_version }}"
+nerd_fonts:
+  - JetBrainsMono
+  - FiraCode
+  - Hack
+  - Meslo
+  - Terminus
+  - SourceCodePro
+  - Go-Mono
+  - DejaVuSansMono
+  - Inconsolata

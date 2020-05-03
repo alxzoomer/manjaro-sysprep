@@ -1,0 +1,5 @@
+---
+- name: Install font
+  include_tasks: fonts.yml
+  vars:
+    ansible_become_user: "{{ target_user }}"

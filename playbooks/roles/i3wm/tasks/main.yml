@@ -1,10 +1,4 @@
 ---
-- name: Install font
-  include_tasks: fonts.yml
-  vars:
-    ansible_become_user: "{{ i3wm_user }}"
-  when: i3wm_fonts_install | bool
-
 - name: Install i3wm
   pacman:
     name: "{{ packages }}"
