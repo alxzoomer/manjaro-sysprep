@@ -6,6 +6,9 @@ i3lock_image_src_file: "{{ i3lock_images_dir }}/lockscreen.png"
 i3lock_image_file: "{{ i3lock_images_dir }}/lockscreen-{{ i3lock_image_size }}.png"
 i3status_config_dir: ~/.config/i3status
 
+# i3status/polybar
+i3wm_bar: "i3status"
+
 # Fonts configuration
 i3wm_fonts_install: true
 i3wm_fonts_dir: "~/.fonts"
@@ -32,3 +35,6 @@ xresources_fonts_path: "{{ xresources_dir }}/fonts"
 xresources_urxvt_path: "{{ xresources_dir }}/urxvt"
 xresources_xterm_path: "{{ xresources_dir }}/xterm"
 xfce4_terminal_config_dir: ~/.config/xfce4/terminal
+
+# Polybar settings
+polybar_config_dir: ~/.config/polybar
