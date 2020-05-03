@@ -25,3 +25,5 @@
 - include_tasks: meltdown.yml
 
 - include_tasks: grub.yml
+
+- include_tasks: backlight.yml

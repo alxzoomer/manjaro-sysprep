@@ -1,0 +1,21 @@
+---
+- name: Install acpilight
+  pacman:
+    name: acpilight
+    state: present
+
+- name: Create group video
+  group:
+    name: video
+    state: present
+
+- name: Add user to group video
+  user:
+    name: "{{ ansible_user }}"
+    groups: video
+    append: yes
+
+- name: Install udev rule for acpilight
+  template:
+    src: 90-backlight.rules.j2
+    dest: /etc/udev/rules.d/90-backlight.rules
