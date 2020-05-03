@@ -11,3 +11,11 @@ XTerm*locale: True
 XTerm*loginShell: True
 XTerm.vt100.selectToClipboard: True
 XTerm*metaSendsEscape: True
+
+XTerm.vt100.printerCommand: xterm -e sh -c 'less -r <&3' 3<&0
+! Show current scrollback in separate xterm window with less
+xterm*VT100.Translations: #override \
+  Ctrl ~Meta ~Shift <Key>slash: print-everything() \n\
+  Ctrl Shift <Key>V:    insert-selection(SELECT) \n\
+  Ctrl Shift <Key>C:    copy-selection(SELECT) \n\
+  Ctrl Shift <Key>K:    clear-saved-lines()
