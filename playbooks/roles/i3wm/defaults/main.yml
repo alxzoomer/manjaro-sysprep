@@ -22,3 +22,10 @@ xfce4_terminal_config_dir: ~/.config/xfce4/terminal
 
 # Polybar settings
 polybar_config_dir: ~/.config/polybar
+polybar_eth_if: enp4s0
+polybar_wifi_if: wlp5s0
+polybar_power_supply_bat: BAT1
+polybar_power_supply_adapter: ADP1
+polybar_left: i3
+polybar_center: mpd
+polybar_right: filesystem xbacklight pulseaudio memory cpu wlan eth battery temperature date powermenu
