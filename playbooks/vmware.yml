@@ -1,0 +1,8 @@
+---
+- name: Install VMWare workstation
+  hosts: all
+  become: True
+  become_user: root
+  gather_facts: True
+  roles:
+    - vmware
