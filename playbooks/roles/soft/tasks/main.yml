@@ -36,6 +36,8 @@
       - google-chrome
       - teams
       - dropbox
+      # Google drive console app
+      - drive-bin
       # Dev
       - typora
       - visual-studio-code-bin
