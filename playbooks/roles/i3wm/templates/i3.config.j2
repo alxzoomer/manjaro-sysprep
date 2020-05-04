@@ -68,13 +68,13 @@ floating_modifier $mod
 # exec gnome-terminal
 exec xfce4-terminal
 
-exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-clipman
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym control+space exec --no-startup-id "rofi -modi window,drun,run -show drun -sidebar-mode -terminal termite -color-window '#000000, #000000, #000000' -color-normal '#000000, #b3e774, #000000, #b3e774, #000000' -color-active '#000000, #b3e774, #000000, #b3e774, #000000' -color-urgent '#000000, #b3e774, #000000, #b3e774, #000000'"
+bindsym $mod+space exec --no-startup-id "rofi -modi window,drun,run -theme solarized -show drun -sidebar-mode -terminal termite -color-window '#000000, #000000, #000000' -color-normal '#000000, #b3e774, #000000, #b3e774, #000000' -color-active '#000000, #b3e774, #000000, #b3e774, #000000' -color-urgent '#000000, #b3e774, #000000, #b3e774, #000000'"
 # kill focused window
 # bindsym $mod+Shift+q kill
 bindsym mod1+F4 kill
@@ -129,7 +129,8 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
+bindsym $mod+Tab focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
