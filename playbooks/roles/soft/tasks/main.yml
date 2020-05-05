@@ -48,6 +48,8 @@
       # Mind map app instead of freemind
       #- freeplane
       - fontviewer
+      # Heavy font manager app
+      # - font-manager
   when: soft_install_aur | bool
   become: true
   become_user: "{{ ansible_user }}"
