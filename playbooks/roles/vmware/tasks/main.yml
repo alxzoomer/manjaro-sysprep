@@ -1,0 +1,42 @@
+---
+- name: Install VMWare dependencies from repo
+  pacman:
+    name:
+      - fuse2
+      - gtkmm
+      - linux-headers
+      - linux56-headers
+      - linux54-headers
+      - pcsclite
+      - libcanberra
+
+- name: Install VMWare dependencies from AUR
+  aur:
+    name:
+      - ncurses5-compat-libs
+  become: true
+  become_user: "{{ ansible_user }}"
+
+- name: Install VMWare from AUR
+  aur:
+    name: vmware-workstation
+  become: true
+  become_user: "{{ ansible_user }}"
+
+- name: Start services
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  loop:
+    - vmware-networks.service
+    - vmware-usbarbitrator.service
+    - vmware-hostd.service
+
+- name: Load VMWare kernel modules
+  modprobe:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - vmw_vmci
+    - vmmon
