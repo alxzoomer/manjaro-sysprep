@@ -1,9 +1,15 @@
 ---
+- name: Remove packages
+  pacman:
+    name:
+      - go
+    state: absent
+
 - name: Install frameworks from Manjaro repo
   pacman:
     name:
       - jre11-openjdk
-      - go
+      - go-pie
       - dotnet-sdk
 
 - name: Install applications from Manjaro repo
@@ -31,6 +37,7 @@
       - keepassxc
       # Office
       - gnome-calculator
+      - meld
 
 - name: Install applications from AUR
   aur:
