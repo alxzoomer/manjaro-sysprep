@@ -45,9 +45,9 @@
       - freemind
       - rbenv
       - ruby-build
-      # - vmware-workstation
       # Mind map app instead of freemind
       #- freeplane
+      - fontviewer
   when: soft_install_aur | bool
   become: true
   become_user: "{{ ansible_user }}"
