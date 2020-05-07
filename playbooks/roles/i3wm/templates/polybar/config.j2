@@ -17,12 +17,10 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #222
+background = #AFACAE
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #555
+foreground = #000
+foreground-alt = #333
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
@@ -43,8 +41,8 @@ foreground = ${colors.foreground}
 line-size = 2
 line-color = #f00
 
-border-size = 1
-border-color = #00000000
+border-size = 0
+border-color = #000
 
 padding-left = 0
 padding-right = 1
@@ -62,8 +60,8 @@ modules-right = {{ polybar_right }}
 ; modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 
 tray-position = right
-tray-padding = 1
-tray-background = #444
+tray-padding = 2
+;tray-background = #1A191A
 
 ;wm-restack = bspwm
 ;wm-restack = i3
