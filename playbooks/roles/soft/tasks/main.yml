@@ -46,6 +46,7 @@
       - google-chrome
       - teams
       - dropbox
+      - dropbox-cli
       # Google drive console app
       - drive-bin
       # Dev
