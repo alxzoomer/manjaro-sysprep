@@ -1,5 +1,6 @@
 ---
 soft_install_aur: true
+soft_upgrade_aur: false
 
 shadowsocks_conf_dir: /etc/shadowsocks
 shadowsocks_service_name: config

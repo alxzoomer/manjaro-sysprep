@@ -62,6 +62,7 @@
       # Heavy font manager app
       # - font-manager
       - xnviewmp
+    skip_installed: "{{ not soft_upgrade_aur }}"
   when: soft_install_aur | bool
   become: true
   become_user: "{{ ansible_user }}"
