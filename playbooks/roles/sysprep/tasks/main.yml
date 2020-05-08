@@ -27,3 +27,7 @@
 - include_tasks: grub.yml
 
 - include_tasks: backlight.yml
+
+- name: Install VMWare guest services
+  include_tasks: vmware_guest.yml
+  when: ansible_virtualization_type == "VMWare" and ansible_virtualization_role == "guest"

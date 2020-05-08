@@ -1,0 +1,15 @@
+---
+- name: Install VMWare guest addons
+  pacman:
+    name:
+      - open-vm-tools
+      - gtkmm3
+
+- name: Start VMWare services
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  loop:
+    - vmtoolsd.service
+    - vmware-vmblock-fuse.service
