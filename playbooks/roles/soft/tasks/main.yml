@@ -38,6 +38,7 @@
       # Office
       - gnome-calculator
       - meld
+      - gendesk
 
 - name: Install applications from AUR
   aur:
