@@ -18,6 +18,8 @@
       # Dev
       - atom
       - docker
+      - docker-compose
+      - kitematic
       - ansible
       - ansible-lint
       - remmina

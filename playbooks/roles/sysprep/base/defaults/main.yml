@@ -1,0 +1,4 @@
+---
+# Install base role
+sysprep_base_install: true
+sysprep_install_updates: false

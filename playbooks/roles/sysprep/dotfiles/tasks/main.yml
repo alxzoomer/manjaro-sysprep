@@ -1,0 +1,14 @@
+---
+- name: Check users var defined
+  debug:
+    msg: Variable users is not defined. Dotfiles installation skipped.
+  when: users is not defined
+
+- name: Install dotfiles
+  include_tasks: dotfiles.yml
+  when: users is defined
+  vars:
+    ansible_become_user: "{{ target_user }}"
+  loop: "{{ users }}"
+  loop_control:
+    loop_var: target_user

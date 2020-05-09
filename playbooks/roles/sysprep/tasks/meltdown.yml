@@ -1,9 +1,0 @@
----
-- name: Disable mitigations
-  lineinfile:
-    path: /etc/default/grub
-    state: present
-    insertafter: EOF
-    regexp: '^GRUB_CMDLINE_LINUX=""'
-    line: 'GRUB_CMDLINE_LINUX="mitigations=off acpi_backlight=vendor"'
-  notify: Update grub

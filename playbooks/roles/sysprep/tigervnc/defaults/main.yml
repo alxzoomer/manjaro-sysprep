@@ -1,0 +1,6 @@
+---
+tigervnc_install: true
+tigervnc_user: "{{ ansible_user }}"
+tigervnc_vncpass:
+tigervnc_display: 1
+tigervnc_geometry: 1920x1080

@@ -1,6 +1,10 @@
-sysprep_install_updates: false
+---
+# Install dotfiles
+dotfiles_install: true
+# Dotfiles directory starting from $HOME user directory
 dotfiles_dir: dotfiles
 
+# Link dotfiles to target directory starting from $HOME user directory
 dotfiles_link_files:
   - src: git/gitconfig
     dest: .gitconfig
@@ -41,10 +45,5 @@ dotfiles_link_dirs:
   - src: vim/colors
     dest: .vim/colors
 
+# VIM settings/plugins/colors/etc directory
 vim_dir: .vim
-
-tigervnc_install: true
-tigervnc_user: "{{ ansible_user }}"
-tigervnc_vncpass:
-tigervnc_display: 1
-tigervnc_geometry: 1920x1080

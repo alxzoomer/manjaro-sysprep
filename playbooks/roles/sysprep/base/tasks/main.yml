@@ -12,21 +12,7 @@
     shell: "/usr/bin/zsh"
   loop: "{{ users }}"
 
-- name: Install dotfiles
-  include_tasks: dotfiles.yml
-  vars:
-    ansible_become_user: "{{ target_user }}"
-  loop: "{{ users }}"
-  loop_control:
-    loop_var: target_user
-
-- include_tasks: tigervnc.yml
-
-- include_tasks: meltdown.yml
-
 - include_tasks: grub.yml
-
-- include_tasks: backlight.yml
 
 - name: Install VMWare guest services
   include_tasks: vmware_guest.yml

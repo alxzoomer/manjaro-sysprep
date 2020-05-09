@@ -5,4 +5,7 @@
   become_user: root
   gather_facts: True
   roles:
-    - sysprep
+    - { role: sysprep/base, when: sysprep_base_install | bool }
+    - { role: sysprep/backlight, when: backlight_install | bool }
+    - { role: sysprep/dotfiles, when: dotfiles_install | bool }
+    - { role: sysprep/tigervnc, when: tigervnc_install | bool }

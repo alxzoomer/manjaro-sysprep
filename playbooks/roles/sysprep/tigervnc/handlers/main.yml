@@ -5,6 +5,3 @@
     enabled: true
     daemon_reload: yes
     name: "vncserver@:{{ tigervnc_display }}"
-
-- name: Update grub
-  shell: /usr/bin/update-grub
