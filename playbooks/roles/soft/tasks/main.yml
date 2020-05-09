@@ -60,7 +60,7 @@
       - rbenv
       - ruby-build
       # Mind map app instead of freemind
-      #- freeplane
+      # - freeplane
       - fontviewer
       # Heavy font manager app
       # - font-manager
