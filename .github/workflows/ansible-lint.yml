@@ -24,8 +24,8 @@ jobs:
 
     - name: Lint Ansible Playbook
       uses: ansible/ansible-lint-action@v4.1.0.post0
-      with:
-        targets: |
-          playbooks/*.yml
-        args: |
-          --force-color
+      # with:
+      #   targets: |
+      #     playbooks/*.yml
+      #   args: |
+      #     --force-color
