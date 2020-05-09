@@ -54,6 +54,7 @@ exec --no-startup-id "pkill dropbox; dropbox"
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Run telegram
+assign [class="^TelegramDesktop$"] 3
 exec --no-startup-id telegram-desktop
 
 # Use pactl to adjust volume in PulseAudio.
@@ -66,8 +67,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# assign [class="Google-chrome"] 2
-# exec /opt/google/chrome/chrome
+assign [class="Google-chrome"] 2
+exec /opt/google/chrome/chrome
 # exec gnome-terminal
 exec xfce4-terminal
 
