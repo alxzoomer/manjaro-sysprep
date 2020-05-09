@@ -1,0 +1,15 @@
+skip_list:
+  - '104' # Found a bare variable ... You should use the full variable syntax
+  - '201' # Trailing whitespace
+  - '204' # Lines should be no longer than 120 chars
+  - '301' # Commands should not change things if nothing needs doing
+  - '303' # systemctl used in place of systemd module
+  - '305' # Use shell only when shell functionality is required
+  - '306' # Shells that use pipes should set the pipefail option
+  - '401' # Git checkouts must contain explicit version
+  - '403' # Package installs should not use latest
+  - '405' # Remote package tasks should have a retry
+  - '503' # Tasks that run when changed should likely be handlers
+  - '701' # No 'galaxy_info' found
+  - '601' # Don't compare to literal True/False
+  - '602' # Don't compare to empty string

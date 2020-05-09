@@ -49,7 +49,7 @@
     dest: "{{ user_info.home }}/{{ item.dest }}"
     state: link
     force: true
-  loop: "{{ dotfiles_link_files + dotfiles_link_dirs}}"
+  loop: "{{ dotfiles_link_files + dotfiles_link_dirs }}"
 
 - name: "Copy files for {{ target_user }}"
   copy:

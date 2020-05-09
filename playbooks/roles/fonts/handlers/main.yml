@@ -2,3 +2,4 @@
 - name: Rebuild fonts cache
   shell: 'fc-cache -v -f'
   become_user: "{{ target_user }}"
+  become: true

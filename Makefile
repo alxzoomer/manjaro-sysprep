@@ -41,6 +41,10 @@ vmware:
 	@echo Run vmware playbook
 	@$(ANSIBLE_PLAYBOOK) -i hosts.yml -l $(LIMIT) $(PLAYBOOKDIR)/vmware.yml
 
+## lint: Lint playbooks
+lint:
+	ansible-lint playbooks/*.yml
+
 ## init: Install required modules for local ansible
 init:
 	@echo Init tools
