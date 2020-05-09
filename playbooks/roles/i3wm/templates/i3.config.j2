@@ -67,13 +67,17 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-assign [class="Google-chrome"] 2
+assign [class="^Google-chrome$"] 2
 exec /opt/google/chrome/chrome
 # exec gnome-terminal
 exec xfce4-terminal
 
 # exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-clipman
+
+# Run Typora
+assign [class="^Typora$"] 4
+exec typora
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
