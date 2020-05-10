@@ -4,6 +4,7 @@ ANSIBLE_PLAYBOOK=`which ansible-playbook`
 LIMIT=f1.hv
 
 PROJECTNAME=$(shell basename "$(PWD)")
+GITHUB_WORKSPACE ?=$(PWD)
 
 ## default: Run 'make' without parameters to show help and init local ansible
 default: help init
@@ -43,9 +44,8 @@ vmware:
 
 ## lint: Lint playbooks
 lint:
-	@echo Run linters in $(PWD)
-	@ls -al -1
-	@ansible-lint --force-color ./playbooks/*.yml
+	@echo Run linters in $(GITHUB_WORKSPACE)
+	@ansible-lint -c $(GITHUB_WORKSPACE)/.ansible-lint --force-color ./playbooks/*.yml
 
 ## init: Install required modules for local ansible
 init:
