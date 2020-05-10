@@ -24,14 +24,11 @@ jobs:
 
     - name: Install ansible-lint
       run: |
-        sudo apt-get update -y
-        sudo apt-get install -y ansible-lint
+        sudo pip install ansible-lint
         ansible-lint --version
 
     - name: Init tools
       run: make init
 
     - name: Lint Ansible Playbook
-      run: |
-        pushd "${GITHUB_WORKSPACE}"
-        ansible-lint --force-color ./playbooks/*.yml
+      run: make lint
