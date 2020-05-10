@@ -23,7 +23,9 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install ansible-lint
-      run: sudo apt-get install -y ansible-lint
+      run: |
+        sudo apt-get install -y ansible-lint
+        ansible-lint --version
 
     - name: Init tools
       run: make init
