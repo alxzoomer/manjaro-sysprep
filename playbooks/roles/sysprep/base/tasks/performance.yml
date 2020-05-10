@@ -1,0 +1,14 @@
+---
+- name: Disable services
+  systemd:
+    name: "{{ item }}"
+    state: stopped
+    enabled: false
+  loop:
+    - avahi-daemon
+
+- name: Increase inotify watchers
+  sysctl:
+    name: fs.inotify.max_user_watches
+    value: '524288'
+    sysctl_file: /etc/sysctl.d/40-max-user-watches.conf
