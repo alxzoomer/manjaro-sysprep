@@ -22,7 +22,11 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
+    - name: Install ansible-lint
+      run: sudo apt-get install -y ansible-lint
+
+    - name: Init tools
+      run: make init
+
     - name: Lint Ansible Playbook
-      uses: ansible/ansible-lint-action@151b9a2
-      with:
-        targets: "./playbooks/*.yml"
+      run: make lint
