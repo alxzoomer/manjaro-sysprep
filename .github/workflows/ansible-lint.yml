@@ -24,8 +24,9 @@ jobs:
 
     - name: Install ansible-lint
       run: |
-        sudo pip install ansible-lint
+        sudo pip install ansible-lint yamllint
         ansible-lint --version
+        yamllint --version
 
     - name: Init tools
       run: make init
