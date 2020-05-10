@@ -45,7 +45,7 @@ vmware:
 ## lint: Lint playbooks
 lint:
 	@echo Run linters in $(GITHUB_WORKSPACE)
-	@ansible-lint -c $(GITHUB_WORKSPACE)/.ansible-lint --force-color ./playbooks/*.yml
+	@ansible-lint --force-color **/*.yml
 
 ## init: Install required modules for local ansible
 init:
