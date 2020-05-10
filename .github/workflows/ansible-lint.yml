@@ -29,4 +29,4 @@ jobs:
       run: make init
 
     - name: Lint Ansible Playbook
-      run: ansible-lint --force-color ./playbooks/*.yml
+      run: ansible-lint -c .ansible-lint --force-color ./playbooks/*.yml
