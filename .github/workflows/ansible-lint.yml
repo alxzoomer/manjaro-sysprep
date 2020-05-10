@@ -29,4 +29,6 @@ jobs:
       run: make init
 
     - name: Lint Ansible Playbook
-      run: ansible-lint -c ./.ansible-lint --force-color ./playbooks/*.yml
+      run: |
+        pushd "${GITHUB_WORKSPACE}"
+        ansible-lint --force-color ./playbooks/*.yml
