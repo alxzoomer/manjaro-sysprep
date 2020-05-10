@@ -94,7 +94,7 @@
     owner: nobody
 
 - name: Start services
-  service:
+  systemd:
     name: "{{ item }}"
     state: started
     enabled: true
