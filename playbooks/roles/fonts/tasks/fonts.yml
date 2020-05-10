@@ -24,7 +24,7 @@
 
 - name: Create fonts directories
   file:
-    path: "{{ fonts_dir }}/{{ item }}"
+    path: "{{ fonts_dir }}/{{ item}}"
     state: directory
   loop: "{{ nerd_fonts }}"
 
