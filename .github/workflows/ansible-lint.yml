@@ -26,7 +26,7 @@ jobs:
       run: |
         sudo pip install ansible-lint yamllint
         ansible-lint --version
-        yamllint --version
+        yamllint -v
 
     - name: Init tools
       run: make init
