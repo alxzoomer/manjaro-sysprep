@@ -43,7 +43,7 @@ vmware:
 
 ## lint: Lint playbooks
 lint:
-	ansible-lint playbooks/*.yml
+	ansible-lint ./playbooks/*.yml
 
 ## init: Install required modules for local ansible
 init:
