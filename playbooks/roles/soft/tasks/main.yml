@@ -33,8 +33,6 @@
       - firefox
       - telegram-desktop
       - transmission-gtk
-      - shadowsocks-libev
-      - openconnect
       # Security
       - keepassxc
       # Office
@@ -81,18 +79,6 @@
     groups: docker
     append: yes
 
-- name: Create shadowsocks config dir
-  file:
-    path: "{{ shadowsocks_conf_dir }}"
-    state: directory
-
-- name: Create shadowsocks config
-  copy:
-    content: "{{ shadowsocks_config | to_nice_json(indent=2) }}"
-    dest: "{{ shadowsocks_conf_file }}"
-    mode: 0640
-    owner: nobody
-
 - name: Start services
   systemd:
     name: "{{ item }}"
@@ -100,4 +86,3 @@
     enabled: true
   loop:
     - docker
-    - 'shadowsocks-libev@{{ shadowsocks_service_name }}'

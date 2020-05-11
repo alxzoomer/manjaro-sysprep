@@ -15,14 +15,19 @@ deploy-ssh:
 	@$(ANSIBLE_PLAYBOOK) --ask-pass -k -K -i hosts.yml -l $(LIMIT) $(PLAYBOOKDIR)/deploy-ssh.yml
 
 ## all: Run sysprep, fonts, i3 and soft
-all: sysprep fonts i3 soft
+all: sysprep vpn-proxy fonts i3 soft
 
-## sysprep: Instal base system packages
+## sysprep: Install base system packages
 sysprep:
 	@echo Run sysprep playbook
 	@$(ANSIBLE_PLAYBOOK) -i hosts.yml -l $(LIMIT) $(PLAYBOOKDIR)/sysprep.yml
 
-## fonts: Instal fonts
+## vpn-proxy: Install VPN and proxy services
+vpn-proxy:
+	@echo Run sysprep playbook
+	@$(ANSIBLE_PLAYBOOK) -i hosts.yml -l $(LIMIT) $(PLAYBOOKDIR)/vpn-proxy.yml
+
+## fonts: Install fonts
 fonts:
 	@echo Run fonts playbook
 	@$(ANSIBLE_PLAYBOOK) -i hosts.yml -l $(LIMIT) $(PLAYBOOKDIR)/fonts.yml

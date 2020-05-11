@@ -1,0 +1,8 @@
+---
+- name: Install vpn and proxy services
+  hosts: all
+  become: True
+  become_user: root
+  gather_facts: True
+  roles:
+    - { role: vpn-proxy, when: vpn_proxy_install | bool }

@@ -1,0 +1,14 @@
+---
+- name: restart shadowsocks
+  systemd:
+    state: restarted
+    enabled: true
+    daemon_reload: yes
+    name: 'shadowsocks-libev@{{ shadowsocks_service_name }}'
+
+- name: restart privoxy
+  systemd:
+    state: restarted
+    enabled: true
+    daemon_reload: yes
+    name: privoxy

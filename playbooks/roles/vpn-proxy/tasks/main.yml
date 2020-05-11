@@ -1,0 +1,38 @@
+---
+- name: Install applications from Manjaro repo
+  pacman:
+    name:
+      - shadowsocks-libev
+      - openconnect
+      - privoxy
+
+- name: Create shadowsocks config dir
+  file:
+    path: "{{ shadowsocks_conf_dir }}"
+    state: directory
+
+- name: Create shadowsocks config
+  copy:
+    content: "{{ shadowsocks_config | to_nice_json(indent=2) }}"
+    dest: "{{ shadowsocks_conf_file }}"
+    mode: 0640
+    owner: nobody
+  notify: restart shadowsocks
+
+- name: Create privoxy config
+  copy:
+    content: |
+      forward-socks5 / {{ shadowsocks_config.local_address }}:{{ shadowsocks_config.local_port }} .
+      listen-address {{ privoxy_listen_address }}
+    dest: "{{ privoxy_conf_file }}"
+    mode: 0644
+  notify: restart privoxy
+
+- name: Start services
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  loop:
+    - 'shadowsocks-libev@{{ shadowsocks_service_name }}'
+    - privoxy
