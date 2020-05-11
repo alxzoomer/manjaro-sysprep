@@ -1,7 +1,7 @@
 
 PLAYBOOKDIR=./playbooks
 ANSIBLE_PLAYBOOK=`which ansible-playbook`
-LIMIT=f1.hv
+LIMIT ?=all
 
 PROJECTNAME=$(shell basename "$(PWD)")
 GITHUB_WORKSPACE ?=$(PWD)
