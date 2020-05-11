@@ -28,7 +28,7 @@ The bootstrap script will perform the following steps:
 
 * Install latest updates
 
-* Install git, ansible, ansible-lint, yamllint and yay (AUR package manager)
+* Install git, ansible, ansible-lint, yamllint, vim and yay (AUR package manager)
 
 * Creates directory `~/projects` and clone this repo as `~/projects/manjaro-sysprep`
 
