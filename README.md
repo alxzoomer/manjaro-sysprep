@@ -60,7 +60,7 @@ Edit the `hosts.yml` and update the following options:
 
 * `i3lock_image_size` - to have correct walpaper and lock screen image size
 
-* `i3_swap_l_alt_l_super` - set `true` if left <kbd>Alt</kbd> must be swapped with <kbd>Win</kbd> key. For my laptop it is preferred option because Win button placed right after <kbd>Space</kbd> button.
+* `i3_swap_l_alt_l_super` - set `true` if left <kbd>Alt</kbd> must be swapped with <kbd>Win</kbd> key. For my laptop it is preferred option because <kbd>Win</kbd> button placed right after <kbd>Space</kbd> button.
 
 * `i3wm_bar` - set to `polybar` to have [polybar](https://github.com/polybar/polybar) bars instead of `i3status`. See more options inside [playbooks/roles/i3wm/defaults/main.yml](https://github.com/alxzoomer/manjaro-sysprep/blob/master/playbooks/roles/i3wm/defaults/main.yml) and Polybar [wiki](https://github.com/polybar/polybar/wiki) for modules configuration (at least battery, network).
 
