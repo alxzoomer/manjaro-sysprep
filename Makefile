@@ -14,7 +14,7 @@ deploy-ssh:
 	@echo Deploy ssh keys
 	@$(ANSIBLE_PLAYBOOK) --ask-pass -k -K -i hosts.yml -l $(LIMIT) $(PLAYBOOKDIR)/deploy-ssh.yml
 
-## all: Run sysprep, i3 and soft
+## all: Run sysprep, fonts, i3 and soft
 all: sysprep fonts i3 soft
 
 ## sysprep: Instal base system packages
