@@ -35,4 +35,3 @@ Execute bootstrap script:
 ```sh
 wget -O- https://raw.githubusercontent.com/alxzoomer/manjaro-sysprep/master/bootstrap.sh | sh
 ```
-
