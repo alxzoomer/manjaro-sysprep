@@ -1,3 +1,4 @@
+*.j2 linguist-detectable=true
 *.scm.j2 linguist-detectable=false
 *.yml linguist-detectable=true
 *.yaml linguist-detectable=true
