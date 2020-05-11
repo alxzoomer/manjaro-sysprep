@@ -16,7 +16,11 @@ The goal of these Ansible playbooks is to build development environment from [Ma
 
 * Pre-configured Ansible inventory hosts.yml file
 
+## Install development environment with Ansible
+
 ### Bootstrap script
+
+Use `bootstrap.sh` to prepare local ansible environment.
 
 The bootstrap script will perform the following steps:
 
@@ -30,8 +34,18 @@ The bootstrap script will perform the following steps:
 
 * Change current directory to `~/projects/manjaro-sysprep`
 
+* Execute init make target
+
 Execute bootstrap script:
 
 ```sh
-wget -O- https://raw.githubusercontent.com/alxzoomer/manjaro-sysprep/master/bootstrap.sh | sh
+source <(wget -O- https://raw.githubusercontent.com/alxzoomer/manjaro-sysprep/master/bootstrap.sh)
+```
+
+### Create hosts.yml
+
+Create `hosts.yml` file from `hosts-example.yml`:
+
+```sh
+cp hosts-example.yml hosts.yml
 ```
