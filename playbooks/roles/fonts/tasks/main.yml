@@ -3,3 +3,10 @@
   include_tasks: fonts.yml
   vars:
     ansible_become_user: "{{ target_user }}"
+
+- name: Install fonts from repo
+  pacman:
+    name: "{{ repo_fonts }}"
+  vars:
+    repo_fonts:
+      noto-fonts-emoji
