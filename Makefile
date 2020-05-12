@@ -14,8 +14,8 @@ deploy-ssh:
 	@echo Deploy ssh keys
 	@$(ANSIBLE_PLAYBOOK) --ask-pass -k -K -i hosts.yml -l $(LIMIT) $(PLAYBOOKDIR)/deploy-ssh.yml
 
-## all: Run sysprep, fonts, i3 and soft
-all: sysprep vpn-proxy fonts i3 soft
+## all: Run sysprep, fonts, i3, soft and docker
+all: sysprep vpn-proxy fonts i3 soft docker
 
 ## sysprep: Install base system packages
 sysprep:
@@ -41,6 +41,11 @@ i3:
 soft:
 	@echo Run soft playbook
 	@$(ANSIBLE_PLAYBOOK) -i hosts.yml -l $(LIMIT) $(PLAYBOOKDIR)/soft.yml
+
+## docker: Install docker
+docker:
+	@echo Run docker playbook
+	@$(ANSIBLE_PLAYBOOK) -i hosts.yml -l $(LIMIT) $(PLAYBOOKDIR)/docker.yml
 
 ## vmware: Install vmware
 vmware:

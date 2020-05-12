@@ -1,0 +1,8 @@
+---
+- name: Install docker
+  hosts: all
+  become: True
+  become_user: root
+  gather_facts: True
+  roles:
+    - { role: docker, when: docker_install | bool }

@@ -1,0 +1,24 @@
+---
+- name: Install docker from Manjaro repo
+  pacman:
+    name:
+      - docker
+      - docker-compose
+      - kitematic
+
+- name: Create group docker
+  group:
+    name: docker
+    state: present
+
+- name: Add user to group docker
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: yes
+
+- name: Start docker service
+  systemd:
+    name: docker
+    state: started
+    enabled: true
