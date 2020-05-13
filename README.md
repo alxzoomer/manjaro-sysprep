@@ -77,3 +77,13 @@ Run `all` target will execute most important playbooks:
 ```sh
 make all
 ```
+
+## OS X specific
+
+### Installing sshpass with brew
+
+sshpass used to run Ansible playbook `deploy-ssh-keys`. Use unofficial brew package:
+
+```sh
+brew install https://raw.githubusercontent.com/kadwanev/bigboybrew/master/Library/Formula/sshpass.rb
+```
