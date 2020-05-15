@@ -1,4 +1,16 @@
 ---
+- name: Fix pacman gpg config
+  lineinfile:
+    path: "{{ sysprep_gpg_conf }}"
+    state: present
+    insertafter: EOF
+    regexp: '^keyserver '
+    line: 'keyserver {{ sysprep_gpg_conf_keyserver }}'
+  when: sysprep_gpg_conf_fix | bool
+  notify: Pacman refresh keys
+
+- meta: flush_handlers
+
 - name: Perform packages update
   include_tasks: update.yml
   when: sysprep_install_updates | bool

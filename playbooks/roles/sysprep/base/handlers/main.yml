@@ -1,3 +1,6 @@
 ---
 - name: Update grub
   shell: /usr/bin/update-grub
+
+- name: Pacman refresh keys
+  shell: pacman-key --refresh-keys

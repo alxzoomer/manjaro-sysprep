@@ -2,3 +2,7 @@
 # Install base role
 sysprep_base_install: true
 sysprep_install_updates: false
+
+# Fix gpg config
+sysprep_gpg_conf_fix: true
+sysprep_gpg_conf_keyserver: hkp://ipv4.pool.sks-keyservers.net:11371
