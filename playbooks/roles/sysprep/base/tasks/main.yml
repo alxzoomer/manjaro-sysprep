@@ -18,6 +18,9 @@
 - name: Install base applications
   include_tasks: base_apps.yml
 
+- name: Install video card utilities
+  include_tasks: nvidia.yml
+
 - name: Change shell for users
   user:
     name: "{{ item }}"

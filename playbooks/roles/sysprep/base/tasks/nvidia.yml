@@ -1,0 +1,12 @@
+---
+- name: Detect NVidia card
+  shell: lspci | grep -E "(3D.*NVIDIA|VGA.*Intel)"
+  register: video_cards
+  failed_when: video_cards.rc not in [0, 1]
+  changed_when: false
+
+- name: Install optimus-manager
+  pacman:
+    name: optimus-manager
+    state: present
+  when: video_cards.stdout_lines | count == 2
