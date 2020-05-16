@@ -133,6 +133,15 @@
       loop:
         - { file: "config", mode: "0644" }
         - { file: "launch.sh", mode: "0755" }
+
+    - name: Copy polybar scripts
+      copy:
+        src: "polybar/{{ item }}"
+        dest: "{{ polybar_config_dir }}/{{ item }}"
+        mode: 0755
+      loop:
+        - system-cpu-frequency.sh
+
   become_user: "{{ i3wm_user }}"
 
 - name: Update autostart

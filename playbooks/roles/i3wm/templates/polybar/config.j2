@@ -88,7 +88,7 @@ font-0 = "Inconsolata Nerd Font:pixelsize=12"
 height = 20
 modules-left =
 modules-center = chrome
-modules-right = cpu memory
+modules-right = system-cpu-frequency cpu memory
 
 [module/chrome]
 inherit = bar/base
@@ -470,6 +470,11 @@ menu-3-0 = logout
 menu-3-0-exec = i3-msg exit
 menu-3-1 = cancel
 menu-3-1-exec = menu-open-0
+
+[module/system-cpu-frequency]
+type = custom/script
+exec = {{ polybar_config_dir }}/system-cpu-frequency.sh
+interval = 10
 
 [settings]
 screenchange-reload = true
