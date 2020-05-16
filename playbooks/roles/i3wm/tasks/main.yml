@@ -134,6 +134,8 @@
         - { file: "config", mode: "0644" }
         - { file: "launch.sh", mode: "0755" }
 
+    - name: Update autostart
+      include_tasks: autostart.yml
   become_user: "{{ i3wm_user }}"
 
 - name: Upload Xorg libinput.conf

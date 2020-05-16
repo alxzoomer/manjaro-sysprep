@@ -1,0 +1,15 @@
+---
+- name: Find non i3 files in autostart directory
+  find:
+    paths: ~/.config/autostart
+    patterns: '^(?!i3).*\.desktop$'
+    use_regex: true
+  register: autostart_find_results
+
+- name: Deleting files from autostart directory
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  loop: "{{ autostart_find_results.files }}"
+  loop_control:
+    label: "{{ item.path }}"
