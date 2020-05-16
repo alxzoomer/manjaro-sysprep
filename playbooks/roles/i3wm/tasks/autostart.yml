@@ -21,7 +21,7 @@
 - name: Find all desktop files in /etc/xdg/autostart
   find:
     paths: /etc/xdg/autostart
-    patterns: *.desktop
+    patterns: '*.desktop'
   register: autostart_global_find_results
 
 - name: Deleting files from global autostart directory
