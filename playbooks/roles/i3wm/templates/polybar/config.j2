@@ -86,7 +86,7 @@ inherit = bar/base
 bottom = true
 font-0 = "Inconsolata Nerd Font:pixelsize=12"
 height = 20
-modules-left =
+modules-left = docker
 modules-center = chrome
 modules-right = system-cpu-frequency cpu memory
 
@@ -475,6 +475,13 @@ menu-3-1-exec = menu-open-0
 type = custom/script
 exec = {{ polybar_config_dir }}/system-cpu-frequency.sh
 interval = 10
+
+[module/docker]
+type = custom/script
+exec = {{ polybar_config_dir }}/docker.sh
+interval = 10
+label =   %output%
+click-left = kitematic
 
 [settings]
 screenchange-reload = true
