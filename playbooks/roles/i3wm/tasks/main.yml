@@ -133,10 +133,10 @@
       loop:
         - { file: "config", mode: "0644" }
         - { file: "launch.sh", mode: "0755" }
-
-    - name: Update autostart
-      include_tasks: autostart.yml
   become_user: "{{ i3wm_user }}"
+
+- name: Update autostart
+  include_tasks: autostart.yml
 
 - name: Upload Xorg libinput.conf
   template:
