@@ -1,4 +1,9 @@
 ---
+- name: Disable dropbox autostart feature
+  shell: dropbox-cli autostart n
+  failed_when: false
+  changed_when: false
+
 - name: Find non i3 files in autostart directory
   find:
     paths: ~/.config/autostart
@@ -31,3 +36,13 @@
   loop: "{{ autostart_global_find_results.files }}"
   loop_control:
     label: "{{ item.path }}"
+
+- name: Create autostart files
+  template:
+    src: app.desktop.j2
+    dest: "~/.config/autostart/i3-{{ item.file }}.desktop"
+  loop: "{{ i3_autostart_apps }}"
+  loop_control:
+    label: "{{ item.file }}"
+  become: true
+  become_user: "{{ i3wm_user }}"

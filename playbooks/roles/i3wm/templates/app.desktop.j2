@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name={{ item.name }}
+Exec={{ item.exec }}
+Icon={{ item.icon | default(item.exec) }}
+Terminal={{ item.terminal | default('false') }}
+StartupNotify={{ item.startup_notify | default('false') }}
+{% if item.wm_class is defined %}
+StartupWMClass={{ item.wm_class }}
+{% endif %}

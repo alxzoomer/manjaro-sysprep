@@ -29,3 +29,43 @@ polybar_power_supply_adapter: ADP1
 polybar_left: i3
 polybar_center: mpd
 polybar_right: filesystem xbacklight pulseaudio memory cpu wlan eth battery temperature date powermenu
+
+i3_autostart_apps:
+  - name: nm-applet
+    file: nm-applet
+    exec: nm-applet
+    icon: nm-device-wireless
+  - name: gxkb
+    file: gxkb
+    exec: gxkb
+    icon: gxkb
+  - name: Clipboard Manager
+    file: xfce4-clipman
+    exec: xfce4-clipman
+    icon: xfce4-clipman-plugin
+  - name: Dropbox
+    file: dropbox
+    exec: dropbox
+    icon: dropbox
+  - name: Google Chrome
+    file: chrome
+    exec: /usr/bin/google-chrome-stable %U
+    startup_notify: 'true'
+    icon: google-chrome
+    wm_class: Google-chrome
+  - name: Xfce Terminal
+    file: xfce4-terminal
+    exec: xfce4-terminal
+    startup_notify: 'true'
+    icon: utilities-terminal
+  - name: Telegram Desktop
+    file: telegram-desktop
+    exec: telegram-desktop -- %u
+    startup_notify: 'true'
+    icon: telegram
+    wm_class: TelegramDesktop
+  - name: Typora
+    file: typora
+    exec: typora %U
+    startup_notify: 'true'
+    icon: typora
