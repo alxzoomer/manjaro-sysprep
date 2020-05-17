@@ -1,0 +1,8 @@
+---
+- name: Install AUR applications by commit hash
+  hosts: all
+  become: True
+  become_user: root
+  gather_facts: True
+  roles:
+    - aur_by_commit

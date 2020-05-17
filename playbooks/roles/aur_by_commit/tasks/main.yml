@@ -1,0 +1,11 @@
+---
+- name: Create working directory
+  file:
+    path: "{{ aur_apps_repos_dir }}"
+    state: directory
+
+- name: Install AUR packages by commit hash
+  include_tasks: aur_installer.yml
+  loop: "{{ aur_apps_by_commit }}"
+  loop_control:
+    loop_var: aur_item

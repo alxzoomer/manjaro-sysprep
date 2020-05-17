@@ -52,6 +52,11 @@ vmware:
 	@echo Run vmware playbook
 	@$(ANSIBLE_PLAYBOOK) -i hosts.yml -l $(LIMIT) $(PLAYBOOKDIR)/vmware.yml
 
+## vmware: Install vmware
+aur-commit:
+	@echo Install soft from AUR by commit
+	@$(ANSIBLE_PLAYBOOK) -i hosts.yml -l $(LIMIT) $(PLAYBOOKDIR)/aur_by_commit.yml
+
 ## lint: Lint playbooks
 lint:
 	@echo Run linters

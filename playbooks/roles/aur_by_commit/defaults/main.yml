@@ -1,0 +1,12 @@
+---
+aur_apps_repos_dir: ~/.temp
+# Example of AUR app description
+aur_apps_by_commit:
+    # AUR Git repo link
+  - repo: https://aur.archlinux.org/ytop-bin.git
+    # Commit hash
+    commit: 970ec767b32a07f6fa25cc752ec7a47cc4d40ec0
+    # AUR package name
+    name: ytop-bin
+    # Remove installed package before building and installing new one
+    force_update: false

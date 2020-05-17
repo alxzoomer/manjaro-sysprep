@@ -1,0 +1,44 @@
+---
+- name: "Check AUR package {{ aur_item.name }} is installed"
+  shell: "pacman -Q {{ aur_item.name }}"
+  failed_when: pacman_installed_result.rc not in [0, 1]
+  register: pacman_installed_result
+  become: true
+  become_user: "{{ ansible_user }}"
+
+- name: "Set fact package is installed"
+  set_fact:
+    pacman_package_installed: "{{ pacman_installed_result.rc == 0 }}"
+
+- name: "Remove package {{ aur_item.name }}"
+  pacman:
+    name: "{{ aur_item.name }}"
+    state: absent
+    force: true
+  when: pacman_package_installed and (aur_item.force_update | default(false))
+
+- name: "Get source for AUR package {{ aur_item.name }}"
+  git:
+    repo: "{{ aur_item.repo }}"
+    dest: "{{ aur_apps_repos_dir }}/{{ aur_item.name }}"
+    version: "{{ aur_item.commit }}"
+  when: not pacman_package_installed or (aur_item.force_update | default(false))
+  become: true
+  become_user: "{{ ansible_user }}"
+
+- name: "Build and install AUR package {{ aur_item.name }}"
+  shell: makepkg -c -f -i -m --noconfirm --noprogressbar --needed
+  args:
+    chdir: "{{ aur_apps_repos_dir }}/{{ aur_item.name }}"
+  environment:
+    PKGEXT: .pkg.tar
+  when: not pacman_package_installed or (aur_item.force_update | default(false))
+  become: true
+  become_user: "{{ ansible_user }}"
+
+- name: "Remove build directory {{ aur_apps_repos_dir }}/{{ aur_item.name }}"
+  file:
+    path: "{{ aur_apps_repos_dir }}/{{ aur_item.name }}"
+    state: absent
+  become: true
+  become_user: "{{ ansible_user }}"
