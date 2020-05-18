@@ -14,8 +14,8 @@ deploy-ssh:
 	@echo Deploy ssh keys
 	@$(ANSIBLE_PLAYBOOK) --ask-pass -k -K -i hosts.yml -l $(LIMIT) $(PLAYBOOKDIR)/deploy-ssh.yml
 
-## all: Run sysprep, fonts, i3, soft and docker
-all: sysprep vpn-proxy fonts i3 soft docker
+## all: Run sysprep, fonts, i3, soft, docker and aur-commit
+all: sysprep vpn-proxy fonts i3 soft docker aur-commit
 
 ## sysprep: Install base system packages
 sysprep:
