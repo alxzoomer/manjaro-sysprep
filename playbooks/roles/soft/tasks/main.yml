@@ -61,6 +61,8 @@
       # - font-manager
       - xnviewmp
     skip_installed: "{{ not soft_upgrade_aur }}"
+  environment:
+    PKGEXT: .pkg.tar
   when: soft_install_aur | bool
   become: true
   become_user: "{{ ansible_user }}"

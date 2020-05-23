@@ -14,12 +14,16 @@
   aur:
     name:
       - ncurses5-compat-libs
+  environment:
+    PKGEXT: .pkg.tar
   become: true
   become_user: "{{ ansible_user }}"
 
 - name: Install VMWare from AUR
   aur:
     name: vmware-workstation
+  environment:
+    PKGEXT: .pkg.tar
   become: true
   become_user: "{{ ansible_user }}"
 

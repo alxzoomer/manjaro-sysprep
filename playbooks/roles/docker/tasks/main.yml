@@ -11,6 +11,8 @@
       - kitematic
   #   skip_installed: "{{ not soft_upgrade_aur }}"
   # when: soft_install_aur | bool
+  environment:
+    PKGEXT: .pkg.tar
   become: true
   become_user: "{{ ansible_user }}"
 
