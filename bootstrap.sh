@@ -7,7 +7,7 @@ sudo systemctl enable sshd
 # Upgrade packages
 sudo pacman -Syu --noconfirm
 # Install ansible stuff
-sudo pacman -S --noconfirm ansible git yay ansible-lint yamllint vim
+sudo pacman -S --noconfirm ansible git yay ansible-lint yamllint vim base-devel
 
 mkdir -p ~/projects
 
