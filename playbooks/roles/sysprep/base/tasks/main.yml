@@ -33,4 +33,4 @@
 
 - name: Install VMWare guest services
   include_tasks: vmware_guest.yml
-  when: (ansible_facts.ansible_virtualization_type | default('x')) == "VMWare" and (ansible_facts.ansible_virtualization_role | default('x')) == "guest"
+  when: (ansible_facts['ansible_virtualization_type'] | default('x')) == "VMWare" and (ansible_facts['ansible_virtualization_role'] | default('x')) == "guest"
