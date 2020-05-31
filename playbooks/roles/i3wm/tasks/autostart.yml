@@ -7,7 +7,7 @@
 - name: Find non i3 files in autostart directory
   find:
     paths: ~/.config/autostart
-    patterns: '^(?!i3).*\.desktop$'
+    patterns: '^.*\.desktop$'
     use_regex: true
   register: autostart_find_results
   become: true
