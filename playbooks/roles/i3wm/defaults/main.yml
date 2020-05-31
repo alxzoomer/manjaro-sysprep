@@ -47,12 +47,12 @@ i3_autostart_apps:
     file: dropbox
     exec: dropbox
     icon: dropbox
-  - name: Google Chrome
-    file: chrome
-    exec: /usr/bin/google-chrome-stable %U
-    startup_notify: 'true'
-    icon: google-chrome
-    wm_class: Google-chrome
+#  - name: Google Chrome
+#    file: chrome
+#    exec: /usr/bin/google-chrome-stable %U
+#    startup_notify: 'true'
+#    icon: google-chrome
+#    wm_class: Google-chrome
   - name: Xfce Terminal
     file: xfce4-terminal
     exec: xfce4-terminal
@@ -64,8 +64,8 @@ i3_autostart_apps:
     startup_notify: 'true'
     icon: telegram
     wm_class: TelegramDesktop
-  - name: Typora
-    file: typora
-    exec: typora %U
-    startup_notify: 'true'
-    icon: typora
+#  - name: Typora
+#    file: typora
+#    exec: typora %U
+#    startup_notify: 'true'
+#    icon: typora
